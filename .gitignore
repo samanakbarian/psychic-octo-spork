@@ -1,0 +1,3 @@
+__pycache__/
+films/*/output/*
+!films/*/output/*_tiktok.mp4
