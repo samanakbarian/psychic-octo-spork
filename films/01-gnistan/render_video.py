@@ -16,6 +16,9 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 import timeline as TL
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+from common import brand  # noqa: E402
+
 W, H, FPS = 1080, 1920, TL.FPS
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "output")
@@ -36,8 +39,11 @@ F_BIG = font("InterDisplay-Black.otf", 150)
 F_CAP = font("InterDisplay-Bold.otf", 64)
 F_SMALL = font("InterDisplay-Medium.otf", 42)
 F_YEAR = font("JetBrainsMono-ExtraBold.ttf", 128)
-F_MODEL = font("JetBrainsMono-Bold.ttf", 46)
-F_STAT = font("JetBrainsMono-Medium.ttf", 27)
+F_YEAR_S = font("JetBrainsMono-ExtraBold.ttf", 64)
+F_TL = font("JetBrainsMono-Bold.ttf", 27)
+F_TL_Y = font("JetBrainsMono-Medium.ttf", 23)
+F_HERE = font("JetBrainsMono-ExtraBold.ttf", 40)
+F_STAT = font("JetBrainsMono-SemiBold.ttf", 31)
 F_LABEL = font("JetBrainsMono-Regular.ttf", 24)
 F_TERM = font("JetBrainsMono-Medium.ttf", 40)
 F_LOG = font("JetBrainsMono-Regular.ttf", 25)
@@ -571,11 +577,11 @@ def text_layer(t):
     layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
     name, s0, s1 = TL.scene_at(t)
-    dark_text = name == "asi" and t > 50.0
+    dark_text = name == "asi" and t > 50.9
 
     # HUD – årsräknaren
     if name in TL.HUD:
-        year, model, stat = TL.HUD[name]
+        year, model, stats = TL.HUD[name]
         if name == "agents" and t >= TL.AGENTS_2026_AT:
             year, s0 = "2026", TL.AGENTS_2026_AT
         rnd = random.Random(int(t * FPS))
@@ -587,13 +593,32 @@ def text_layer(t):
                 year = "".join(rnd.choice("0123456789") for _ in range(4))
         k = ramp(t, s0, s0 + 0.15) if name != "gpt1" else ramp(t, 3.0, 3.3)
         col = (20, 20, 20) if dark_text else (235, 240, 245)
-        x, y = 70, 230
+        x, y = 70, 200
         a = int(255 * k)
-        d.text((x, y), "● REC   ÅR", font=F_LABEL, fill=(255, 60, 50, a if int(t * 2) % 2 else a // 3))
-        d.text((x - 6, y + 28), year, font=F_YEAR, fill=col + (a,))
+        d.text((x, y), "● REC", font=F_LABEL, fill=(255, 60, 50, a if int(t * 2) % 2 else a // 3))
+        d.text((x - 3, y + 26), year, font=F_YEAR_S, fill=col + (a,))
+        # Modellnamnet – stort, smäller in vid scenstart
+        ms = s0 if not (name == "agents" and t >= TL.AGENTS_2026_AT) else 35.0
+        slam = 1 - ramp(t, ms, ms + 0.35)
+        size = 130
+        while size > 60 and d.textlength(model, font=font("InterDisplay-Black.otf", size)) > 900:
+            size -= 6
+        fm = font("InterDisplay-Black.otf", int(size * (1 + 0.35 * slam)))
         mc = (120, 20, 10) if dark_text else ((255, 70, 50) if name in ("agi", "asi") else CYAN)
-        d.text((x, y + 172), model, font=F_MODEL, fill=mc + (a,))
-        d.text((x, y + 232), stat, font=F_STAT, fill=((60, 40, 30) if dark_text else AMBER) + (int(a * 0.85),))
+        mc = mix_col(mc, (255, 255, 255), slam)
+        d.text((x - 6, y + 100 - int(size * 0.35 * slam * 0.5)), model, font=fm, fill=mc + (a,))
+        sy = y + 100 + int(size * 1.08)
+        for ln in stats:
+            d.text((x, sy), ln, font=F_STAT, fill=((60, 40, 30) if dark_text else AMBER) + (int(a * 0.9),))
+            sy += 42
+
+    # Tidslinje: var är vi just nu?
+    if name == "now" and t > 40.8:
+        draw_timeline(d, t, 1230, ramp(t, 40.8, 41.1), t - 40.8)
+    if name == "outro":
+        draw_timeline(d, t, 1040, window(t, 52.8, 57.7, 0.4, 0.3), t - 52.8)
+
+    brand.draw_logo(d, dark=dark_text)
 
     # ChatGPT-terminal
     if name == "chatgpt":
@@ -644,8 +669,6 @@ def text_layer(t):
             if t >= st:
                 y = 700 if txt == "HÄR." else 920
                 centered(d, txt, F_HUGE if txt == "HÄR." else F_BIG, y, (255, 255, 255, 255))
-        if t > 40.8:
-            centered(d, "2026", F_STAT, 1130, AMBER + (int(255 * ramp(t, 40.8, 41.1)),))
 
     # Undertexter
     for (a, b, txt, style) in TL.CAPTIONS:
@@ -658,6 +681,50 @@ def text_layer(t):
             for i, ln in enumerate(wrap(d, txt, f, 820)):
                 centered(d, ln, f, y + dy + i * int(f.size * 1.18), col + (int(255 * k),))
     return layer
+
+
+def draw_timeline(d, t, y, k, lt):
+    """Horisontell tidslinje GPT-1 -> ASI med en pulserande 'VI ÄR HÄR'-markör."""
+    if k <= 0:
+        return
+    a = int(255 * k)
+    n = len(TL.TIMELINE)
+    xs = [80 + i * (810 / (n - 1)) for i in range(n)]  # håll fri från TikToks högerikoner
+    xn = xs[TL.NOW_INDEX]
+    grow = ramp(lt, 0.0, 0.8)
+    xe = xs[0] + (xs[-1] - xs[0]) * grow
+    d.line([(xs[0], y), (min(xe, xn), y)], fill=(235, 240, 245, a), width=4)
+    if xe > xn:  # framtiden: streckad röd
+        xx = xn
+        while xx < xe:
+            d.line([(xx, y), (min(xx + 14, xe), y)], fill=(255, 60, 50, a), width=4)
+            xx += 26
+    for i, (yr, nm) in enumerate(TL.TIMELINE):
+        if xs[i] > xe + 1:
+            continue
+        x = xs[i]
+        if i < TL.NOW_INDEX:
+            d.ellipse([x - 9, y - 9, x + 9, y + 9], fill=(235, 240, 245, a))
+            c = (235, 240, 245, a)
+        elif i == TL.NOW_INDEX:
+            p = 0.5 + 0.5 * math.sin(t * 8)
+            r = 14 + 10 * p
+            d.ellipse([x - r, y - r, x + r, y + r], outline=(255, 60, 50, int(a * (1 - p * 0.7))), width=3)
+            d.ellipse([x - 13, y - 13, x + 13, y + 13], fill=(255, 60, 50, a))
+            c = (255, 255, 255, a)
+        else:
+            d.ellipse([x - 9, y - 9, x + 9, y + 9], outline=(255, 60, 50, a), width=3)
+            c = (255, 90, 70, a)
+        w = d.textlength(nm, font=F_TL)
+        d.text((x - w / 2, y + 22), nm, font=F_TL, fill=c)
+        if i != TL.NOW_INDEX:
+            w = d.textlength(yr, font=F_TL_Y)
+            d.text((x - w / 2, y - 46), yr, font=F_TL_Y, fill=c[:3] + (int(a * 0.6),))
+    if lt > 0.5:
+        ka = int(a * ramp(lt, 0.5, 0.8))
+        lbl = "▼ VI ÄR HÄR · 2026"
+        w = d.textlength(lbl, font=F_HERE)
+        d.text((min(max(xn - w / 2, 60), W - 60 - w), y - 108), lbl, font=F_HERE, fill=(255, 60, 50, ka))
 
 
 def centered(d, txt, f, y, fill):
@@ -722,7 +789,7 @@ def render(fi):
     alpha = ta[..., 3:4]
     sh = np.asarray(tl.getchannel("A").resize((W // 4, H // 4), Image.BILINEAR)
                     .filter(ImageFilter.GaussianBlur(6)).resize((W, H), Image.BILINEAR), np.float32)[..., None] / 255
-    dark_text = name == "asi" and t > 50.0
+    dark_text = name == "asi" and t > 50.9
     if not dark_text:
         img = img * (1 - np.clip(sh * 1.4, 0, 0.75))
     img = img * (1 - alpha) + ta[..., :3] * alpha
@@ -778,7 +845,8 @@ def main():
     ff = subprocess.Popen([
         "ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
         "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
-        "-c:v", "libx264", "-preset", "slow", "-crf", "17", "-pix_fmt", "yuv420p", dst,
+        "-c:v", "libx264", "-preset", "medium", "-b:v", "4500k", "-maxrate", "7000k", "-bufsize", "9000k",
+        "-pix_fmt", "yuv420p", dst,
     ], stdin=subprocess.PIPE)
     with Pool(os.cpu_count(), initializer=init) as pool:
         for i, fr in enumerate(pool.imap(render, range(n), chunksize=4)):

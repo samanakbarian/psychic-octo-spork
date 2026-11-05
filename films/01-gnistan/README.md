@@ -15,6 +15,10 @@ Skillnaden ligger i vändningen. Fatboy Slim stannar i nuet, men här rullar rä
 
 ## Specifikationer
 
+- Loggan **MISTER PRESS** ligger i övre högra hörnet under hela filmen och kommer från `common/brand.py`, som delas av alla filmer.
+- Modellnamnen (GPT-1, ChatGPT, o1, AI-AGENTER, AGI, ASI) visas som stora rubriker som smäller in vid varje scenbyte, med en förklarande rad under.
+- En tidslinje med markeringen "VI ÄR HÄR" (mellan agenter och AGI) visas vid klimaxen och i slutet.
+
 - 1080×1920, 30 fps, 58 s, H.264 + AAC
 - All text ligger inom TikToks säkra zon, alltså ovanför bottentexten och till vänster om ikonerna till höger
 - Originalmusiken är syntad i kod och därmed fri från upphovsrätt. Byt gärna till ett ljud från TikToks eget bibliotek.
@@ -29,12 +33,12 @@ Skillnaden ligger i vändningen. Fatboy Slim stannar i nuet, men här rullar rä
 | 14–19 | GPT-3 | 2020 · 175 md | Nätet exploderar, kameran drar ut och staden reser sig | *Sen lärde den sig låta som oss.* | Hi-hats: data börjar flöda |
 | 19–25 | ChatGPT | 2022 | Terminal: `> hej. vem är du?` och en användarräknare som rusar till 100 000 000 | *Vi släppte in den. / 100 miljoner av oss. På två månader.* | Tangentklick synkat mot varje tecken |
 | 25–30 | GPT-4 | 2023 | Ett gigantiskt öga öppnas över staden med neon i irisen | *Den lärde sig se.* | |
-| 30–35 | Resonerande | 2024 | Ett tanketräd förgrenar sig, döda grenar blir röda och en väg vinner | *Den lärde sig tänka efter.* | |
+| 30–35 | o1 (resonerande) | 2024 | Ett tanketräd förgrenar sig, döda grenar blir röda och en väg vinner | *Den lärde sig tänka efter.* | |
 | 35–39,5 | Agenter | 2025 → 2026 | Hundratals agenter rusar genom stadens rutnät. Loggen: `agent_2210 » startar agent_2211…` | *Nu jobbar den. Utan oss.* | 150 BPM, riser |
-| 39,5–42 | **NU** | 2026 | Strömavbrott. Svart. Regn. | **HÄR. / JUST NU.** | Två jättesmällar, tinnitus |
+| 39,5–42 | **NU** | 2026 | Strömavbrott. Svart. Regn. Tidslinje: GPT-1 → … → **● VI ÄR HÄR** → AGI? → ASI? | **HÄR. / JUST NU.** | Två jättesmällar, tinnitus |
 | 42–47,5 | AGI | 20?? | Staden tänds i rött. En trådsfär reser sig bakom skylinen. | *Snart: lika smart som vi. / I allt.* | "BRAAAM", tung maskinpuls |
 | 47,5–52 | ASI | ???? | Sfären sväller över hela bilden och vitnar ut | *Sen smartare än alla oss. / Tillsammans.* | Shepard-riser och hård cut |
-| 52–58 | OUTRO | – | Svart, regn och en ensam gnista (loopar till början) | *Vi är här. Just nu. / Frågan är vad vi gör med tiden som är kvar.* | Ett ensamt hjärta |
+| 52–58 | OUTRO | – | Svart, regn, en ensam gnista och tidslinjen igen (loopar till början) | *Vi är här. Just nu. / Frågan är vad vi gör med tiden som är kvar.* | Ett ensamt hjärta |
 
 ### Faktakoll
 - GPT-1 (juni 2018): 117 M parametrar

@@ -27,16 +27,21 @@ SCENES = [
 
 # HUD – "räknaren" i hörnet. (år, modell, faktarad)
 HUD = {
-    "gpt1":    ("2018", "GPT-1",   "117 MILJONER PARAMETRAR"),
-    "gpt2":    ("2019", "GPT-2",   "1,5 MILJARDER PARAMETRAR"),
-    "gpt3":    ("2020", "GPT-3",   "175 MILJARDER PARAMETRAR"),
-    "chatgpt": ("2022", "CHATGPT", "100 MILJONER ANVÄNDARE / 2 MÅN"),
-    "gpt4":    ("2023", "GPT-4",   "SER. LÄSER. HÖR."),
-    "reason":  ("2024", "RESONERANDE MODELLER", "TÄNKER INNAN DEN SVARAR"),
-    "agents":  ("2025", "AGENTER", "AUTONOMA. DYGNET RUNT."),
-    "agi":     ("20??", "AGI",     "ARTIFICIELL GENERELL INTELLIGENS"),
-    "asi":     ("????", "ASI",     "ARTIFICIELL SUPERINTELLIGENS"),
+    "gpt1":    ("2018", "GPT-1",   ["OPENAI:S FÖRSTA SPRÅKMODELL", "117 MILJONER PARAMETRAR"]),
+    "gpt2":    ("2019", "GPT-2",   ["1,5 MILJARDER PARAMETRAR"]),
+    "gpt3":    ("2020", "GPT-3",   ["175 MILJARDER PARAMETRAR"]),
+    "chatgpt": ("2022", "ChatGPT", ["AI:N SOM ALLA BÖRJADE PRATA MED", "100 MILJONER ANVÄNDARE PÅ 2 MÅN"]),
+    "gpt4":    ("2023", "GPT-4",   ["SER BILDER. LÄSER. RESONERAR."]),
+    "reason":  ("2024", "o1",      ["RESONERANDE AI", "TÄNKER INNAN DEN SVARAR"]),
+    "agents":  ("2025", "AI-AGENTER", ["JOBBAR SJÄLVA. DYGNET RUNT."]),
+    "agi":     ("20??", "AGI",     ["ARTIFICIELL GENERELL INTELLIGENS", "LIKA SMART SOM EN MÄNNISKA"]),
+    "asi":     ("????", "ASI",     ["ARTIFICIELL SUPERINTELLIGENS", "SMARTARE ÄN HELA MÄNSKLIGHETEN"]),
 }
+
+# Tidslinjen som visar "var vi är just nu" (år, namn) – index NOW_INDEX = vi är här
+TIMELINE = [("2018", "GPT-1"), ("2020", "GPT-3"), ("2022", "ChatGPT"), ("2024", "o1"),
+            ("2026", "AGENTER"), ("20??", "AGI"), ("????", "ASI")]
+NOW_INDEX = 4
 AGENTS_2026_AT = 37.4  # årtalet slår om till 2026 mitt i agent-scenen
 
 # Undertexter: (start, slut, text, stil)

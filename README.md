@@ -6,6 +6,10 @@ Kodgenererade kortfilmer för TikTok (1080×1920, vertikalt). Varje film ligger 
 |---|---|---|---|
 | 01 | [GNISTAN](films/01-gnistan/) | 58 s | AI:s evolution från GPT-1 till agenter, AGI och ASI. Mörkt, Blade Runner, inspirerat av *Right Here, Right Now*. |
 
+## Varumärke
+
+Loggan (**MISTER PRESS**) definieras i `common/brand.py` och ritas automatiskt i alla filmer.
+
 ## Kom igång
 
 ```bash
