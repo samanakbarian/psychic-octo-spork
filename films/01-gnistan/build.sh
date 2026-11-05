@@ -6,5 +6,6 @@ mkdir -p output
 python3 render_audio.py
 python3 render_video.py
 ffmpeg -y -loglevel error -i output/video_only.mp4 -i output/soundtrack.wav \
-  -c:v copy -c:a aac -b:a 256k -shortest -movflags +faststart output/gnistan_tiktok.mp4
+  -c:v libx264 -preset slow -b:v 4500k -maxrate 7000k -bufsize 9000k -pix_fmt yuv420p \
+  -c:a aac -b:a 256k -shortest -movflags +faststart output/gnistan_tiktok.mp4
 echo "Klar: output/gnistan_tiktok.mp4"
