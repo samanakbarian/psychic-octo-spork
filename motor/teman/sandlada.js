@@ -369,6 +369,7 @@
       if (r.titta && ROLLER[r.titta]) rikta(st, ROLLER[r.titta].plats);
       else if (r.titta === 'kamera') st.titta = [0, 0.1];
       st.skaka = r.humor === 'arg' ? 6 : 0;
+      if (r.puffa) st.r *= 1 + 0.4 * M.fonster(t, r.start, r.slut, 0.4, 0.3);  // blåser upp sig
       st.talar = true;
     }
     return st;
