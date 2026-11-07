@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<title>Filmmotor</title>
+<style>
+  @font-face { font-family: 'Fredoka'; src: url('typsnitt/Fredoka.ttf'); font-weight: 300 700; }
+  @font-face { font-family: 'Display'; src: url('typsnitt/InterDisplay-Black.otf'); font-weight: 900; }
+  @font-face { font-family: 'Display'; src: url('typsnitt/InterDisplay-Bold.otf'); font-weight: 700; }
+  @font-face { font-family: 'Display'; src: url('typsnitt/InterDisplay-Medium.otf'); font-weight: 500; }
+  @font-face { font-family: 'Mono'; src: url('typsnitt/JetBrainsMono-ExtraBold.ttf'); font-weight: 800; }
+  @font-face { font-family: 'Mono'; src: url('typsnitt/JetBrainsMono-Bold.ttf'); font-weight: 700; }
+  @font-face { font-family: 'Mono'; src: url('typsnitt/JetBrainsMono-Medium.ttf'); font-weight: 500; }
+  html, body { margin: 0; background: #111; color: #ddd; font: 14px system-ui, sans-serif; }
+  #duk { display: block; }
+  body.forhand { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 8px; }
+  body.forhand #duk { height: calc(100vh - 70px); width: auto; box-shadow: 0 0 40px #000; }
+  #kontroll { display: none; gap: 10px; align-items: center; width: min(560px, 95vw); }
+  body.forhand #kontroll { display: flex; }
+  #kontroll input { flex: 1; }
+</style>
+</head>
+<body>
+<canvas id="duk" width="1080" height="1920"></canvas>
+<div id="kontroll">
+  <button id="spela">▶</button>
+  <input id="tid" type="range" min="0" max="1" step="0.01" value="0">
+  <span id="tidtext">0.0 s</span>
+</div>
+<script src="motor.js"></script>
+<script src="teman/sandlada.js"></script>
+<script src="teman/noir.js"></script>
+<script>Motor.start();</script>
+</body>
+</html>

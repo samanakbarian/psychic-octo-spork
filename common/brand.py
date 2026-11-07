@@ -1,14 +1,16 @@
 """Kanalens varumärke – används av alla filmer.
 
-Ändra här så får alla framtida renderingar den nya loggan.
+Ändra brand.json så får alla framtida renderingar den nya loggan.
 """
+import json
 import os
 
 from PIL import ImageFont
 
-TOP = "MISTER"
-BOTTOM = "PRESS"
-ACCENT = (255, 50, 40)
+_B = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "brand.json"), encoding="utf-8"))
+TOP = _B["topp"]
+BOTTOM = _B["botten"]
+ACCENT = tuple(int(_B["accent"][i:i + 2], 16) for i in (1, 3, 5))
 
 _FD = "/usr/share/fonts/opentype/inter"
 

@@ -1,0 +1,94 @@
+{
+  "titel": "SANDLÅDAN",
+  "tema": "sandlada",
+  "fps": 30,
+  "musik": { "stil": "lekplats", "tempo": 136, "tonart": "F", "seed": 7 },
+  "raknareEtikett": "ANTAL DAGAR UTAN REGERING",
+  "roller": {
+    "V":  { "farg": "#AF1E1E", "plats": [150, 880],  "rost": 240 },
+    "S":  { "farg": "#E8112D", "plats": [330, 820],  "rost": 200 },
+    "MP": { "farg": "#83CF39", "plats": [190, 1090], "rost": 330 },
+    "C":  { "farg": "#009933", "plats": [410, 1040], "rost": 290 },
+    "L":  { "farg": "#006AB3", "plats": [620, 1070], "rost": 430, "r": 56 },
+    "KD": { "farg": "#231977", "plats": [830, 1080], "rost": 185 },
+    "M":  { "farg": "#52BDEC", "plats": [720, 820],  "rost": 230 },
+    "SD": { "farg": "#DDDD00", "plats": [900, 880],  "rost": 165, "textFarg": "#1d3f8f" },
+    "TM": { "farg": "#9b7fc4", "plats": [540, 690],  "rost": 120, "r": 100, "typ": "talman", "text": "TALMAN" }
+  },
+  "scener": [
+    {
+      "typ": "rubrik", "len": 3.4, "raknare": 0, "musik": "start",
+      "rader": [[0.1, "Valet är klart."], [1.0, "Nu börjar"], [1.35, "barnprogrammet."]]
+    },
+    {
+      "typ": "intro", "len": 6.0, "raknare": [0, 4], "musik": "spela",
+      "forsening": 0.3, "mellanrum": 0.45,
+      "texter": [[0.4, 2.2, "8 partier."], [2.2, 4.0, "1 sandlåda."], [4.0, 6.0, "0 vuxna.", "stor"]]
+    },
+    {
+      "typ": "prat", "len": 10.4, "raknare": [4, 31], "musik": "spela",
+      "repliker": [
+        { "t": 0.2, "vem": "S",  "text": "Jag ska vara statsminister!", "len": 1.7, "humor": "glad", "titta": "kamera" },
+        { "t": 1.9, "vem": "M",  "text": "Nej, JAG ska vara statsminister!", "len": 1.9, "humor": "arg", "titta": "S", "zoom": true },
+        { "t": 3.9, "vem": "SD", "text": "Jag vill inte vara med. Jag vill bara bestämma.", "len": 2.4, "titta": "kamera" },
+        { "t": 6.4, "vem": "C",  "text": "Jag leker inte med dig.", "len": 1.4, "humor": "sur", "titta": "SD" },
+        { "t": 7.8, "vem": "C",  "text": "…eller dig.", "len": 1.1, "humor": "sur", "titta": "V", "hopp": false },
+        { "t": 9.0, "vem": "V",  "text": "Själv då!", "len": 1.35, "humor": "arg", "titta": "C" }
+      ]
+    },
+    {
+      "typ": "prat", "len": 8.8, "raknare": [31, 58], "musik": "spela",
+      "repliker": [
+        { "t": 0.2, "vem": "MP", "text": "Är sanden ens klimatsmart?", "len": 1.8, "titta": "kamera" },
+        { "t": 2.1, "vem": "KD", "text": "Jag har saft! Men bara till kärnfamiljen.", "len": 2.2, "humor": "glad", "titta": "kamera" },
+        { "t": 4.4, "vem": "L",  "text": "Hallå? Får jag vara med?", "len": 1.6, "humor": "ledsen", "zoom": 0.35, "ignoreras": true, "titta": "kamera" },
+        { "t": 6.1, "vem": "M",  "text": "Det där är MIN spade!", "len": 1.35, "humor": "arg", "titta": "S" },
+        { "t": 7.5, "vem": "S",  "text": "Den har varit min sen 1932!", "len": 1.3, "humor": "arg", "titta": "M", "zoom": true }
+      ]
+    },
+    {
+      "typ": "brak", "len": 5.2, "raknare": [58, 96], "raknareKurva": "linjar", "musik": "kaos",
+      "ljudord": [[0.5, "POW!"], [1.2, "BONK!"], [1.9, "KLONK!"], [2.6, "SMACK!"], [3.3, "PANG!"], [4.0, "AJ!"]],
+      "repliker": [
+        { "t": 0.7, "vem": "SD", "text": "Han började!", "len": 1.0, "hopp": false },
+        { "t": 1.5, "vem": "V",  "text": "NEJ, HAN!", "len": 0.9, "hopp": false },
+        { "t": 2.3, "vem": "KD", "text": "MAMMAAA!", "len": 0.9, "hopp": false },
+        { "t": 3.1, "vem": "C",  "text": "Jag skvallrar för EU!", "len": 1.2, "hopp": false },
+        { "t": 4.0, "vem": "L",  "text": "Aj, min hink!", "len": 0.9, "hopp": false }
+      ],
+      "texter": [[0.3, 5.0, "Förhandlingarna går ”framåt”."]]
+    },
+    {
+      "typ": "rostning", "len": 8.6, "raknare": [96, 121], "musik": "spanning",
+      "repliker": [
+        { "t": 0.6, "vem": "TM", "text": "Ordning! Nu röstar vi om en statsminister.", "len": 2.3, "hopp": false }
+      ],
+      "stamplar": [
+        { "t": 3.2, "rubrik": "FÖRSLAG 1", "text": "NEJ" },
+        { "t": 4.3, "rubrik": "FÖRSLAG 2", "text": "NEJ" },
+        { "t": 5.4, "rubrik": "FÖRSLAG 3", "text": "NEJ" },
+        { "t": 6.7, "banderoll": true, "text": "EXTRAVAL?!" }
+      ],
+      "humorVid": [[6.7, "chock"]],
+      "texter": [[6.9, 8.6, "Fyra nej i rad = extraval.\nDet är faktiskt lagen."]]
+    },
+    {
+      "typ": "kor", "len": 4.8, "raknare": [121, 128], "musik": "spela",
+      "rad": ["V", "S", "MP", "C", "L", "KD", "M", "SD"], "radY": 920,
+      "texter": [[0.1, 2.2, "Till slut enades alla om en sak:"]],
+      "repliker": [
+        { "t": 2.3, "vem": "ALLA", "text": "DET ÄR DE ANDRAS FEL!", "len": 2.3, "humor": "arg" }
+      ]
+    },
+    {
+      "typ": "slut", "len": 5.6, "raknare": [128, 137], "musik": "stopp",
+      "allaHumor": "sur",
+      "titta": { "V": [-1, 0], "S": [-1, 0.2], "MP": [-1, 0], "C": [1, 0], "L": [0, 1], "KD": [1, 0], "M": [1, 0.2], "SD": [1, 0] },
+      "ljud": [[0.05, "trombon"]],
+      "texter": [
+        [0.6, 5.6, "Och vi som trodde att det var vi som var barnsliga."],
+        [2.2, 5.6, "Följ för fler dagar i sandlådan.", "liten"]
+      ]
+    }
+  ]
+}

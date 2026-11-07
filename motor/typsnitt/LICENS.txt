@@ -1,0 +1,4 @@
+Typsnitten ligger under SIL Open Font License 1.1:
+- Fredoka (Google Fonts)
+- Inter Display (Rasmus Andersson)
+- JetBrains Mono (JetBrains)
