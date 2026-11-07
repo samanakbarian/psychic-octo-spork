@@ -37,6 +37,8 @@ Upplägget är detsamma som i `loven-stats-backend/film`:
 
 Tider inne i en scen är relativa till scenens start.
 
+**Räknare mot verkligheten:** med `"raknareFran": "2026-09-13"` slutar räknaren på det faktiska antalet dagar fram till renderingsdagen, och scenernas `raknare`-värden skalas om så att tempot behålls. Rendera om filmen så stämmer siffran igen. Med `"raknareIdag"` låser du ett datum.
+
 ## Musik
 
 Välj stil med `musik.stil`. Ett nytt `seed` ger en ny melodi. Varje scen styr läget med `musik`: `spela`, `kaos`, `spanning` (trumvirvel), `stopp` eller `start`.

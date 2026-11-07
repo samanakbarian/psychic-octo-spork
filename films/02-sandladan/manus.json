@@ -4,6 +4,7 @@
   "fps": 30,
   "musik": { "stil": "lekplats", "tempo": 136, "tonart": "F", "seed": 7 },
   "raknareEtikett": "ANTAL DAGAR UTAN REGERING",
+  "raknareFran": "2026-09-13",
   "roller": {
     "V":  { "farg": "#AF1E1E", "plats": [150, 880],  "rost": 240 },
     "S":  { "farg": "#E8112D", "plats": [330, 820],  "rost": 200 },
@@ -82,7 +83,7 @@
       ]
     },
     {
-      "typ": "slut", "len": 5.6, "raknare": [128, 137], "musik": "stopp",
+      "typ": "slut", "len": 5.6, "raknare": [128, 137], "raknareAndel": 0.55, "musik": "stopp",
       "allaHumor": "sur",
       "titta": { "V": [-1, 0], "S": [-1, 0.2], "MP": [-1, 0], "C": [1, 0], "L": [0, 1], "KD": [1, 0], "M": [1, 0.2], "SD": [1, 0] },
       "ljud": [[0.05, "trombon"]],

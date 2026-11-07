@@ -85,10 +85,12 @@
     const s = M.scenVid(t);
     const r = s.raknare;
     if (r == null) return null;
-    if (typeof r === 'number' || typeof r === 'string') return r;
-    const u = M.clamp((t - s.start) / s.len);
+    const skala = M.raknareSkala || 1;
+    if (typeof r === 'string') return r;
+    if (typeof r === 'number') return Math.floor(r * skala);
+    const u = M.clamp((t - s.start) / (s.len * (s.raknareAndel || 1)));
     const k = s.raknareKurva === 'linjar' ? u : M.smooth(u);
-    return Math.floor(r[0] + (r[1] - r[0]) * k);
+    return Math.floor((r[0] + (r[1] - r[0]) * k) * skala + 1e-6);
   };
 
   // ------------------------------------------------------------ loggan
@@ -135,6 +137,15 @@
     const manus = window.MANUS || await (await fetch(q.get('manus'), { cache: 'no-store' })).json();
     M.brand = window.BRAND || await (await fetch('/common/brand.json', { cache: 'no-store' })).json();
     M.manus = bygg(manus);
+    // "raknareFran": ett datum. Räknaren slutar då på antal dagar fram till i dag
+    // (eller "raknareIdag"), och manusets värden skalas om så tempot behålls.
+    if (manus.raknareFran) {
+      const idag = manus.raknareIdag ? new Date(manus.raknareIdag) : new Date();
+      const dagar = Math.floor((idag - new Date(manus.raknareFran)) / 86400000);
+      const max = Math.max(...manus.scener.flatMap(s => (Array.isArray(s.raknare) ? s.raknare : typeof s.raknare === 'number' ? [s.raknare] : [])));
+      M.raknareSkala = max > 0 ? dagar / max : 1;
+      M.raknareDagar = dagar;
+    }
     M.tema = M.teman[manus.tema];
     if (!M.tema) throw new Error('Okänt tema: ' + manus.tema);
     M.ctx = document.getElementById('duk').getContext('2d');
