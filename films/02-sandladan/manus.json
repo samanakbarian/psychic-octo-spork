@@ -39,7 +39,7 @@
     {
       "typ": "prat", "len": 8.8, "raknare": [31, 58], "musik": "spela",
       "repliker": [
-        { "t": 0.2, "vem": "MP", "text": "Är sanden ens klimatsmart?", "len": 1.8, "titta": "kamera" },
+        { "t": 0.2, "vem": "MP", "text": "Men tänk på klimatet!", "len": 1.8, "titta": "kamera" },
         { "t": 2.1, "vem": "KD", "text": "Jag har saft! Men bara till kärnfamiljen.", "len": 2.2, "humor": "glad", "titta": "kamera" },
         { "t": 4.4, "vem": "L",  "text": "Hallå? Får jag vara med?", "len": 1.6, "humor": "ledsen", "zoom": 0.35, "ignoreras": true, "titta": "kamera" },
         { "t": 6.1, "vem": "M",  "text": "Det där är MIN spade!", "len": 1.35, "humor": "arg", "titta": "S" },
@@ -50,7 +50,7 @@
       "typ": "brak", "len": 5.2, "raknare": [58, 96], "raknareKurva": "linjar", "musik": "kaos",
       "ljudord": [[0.5, "POW!"], [1.2, "BONK!"], [1.9, "KLONK!"], [2.6, "SMACK!"], [3.3, "PANG!"], [4.0, "AJ!"]],
       "repliker": [
-        { "t": 0.7, "vem": "SD", "text": "Han började!", "len": 1.0, "hopp": false },
+        { "t": 0.6, "vem": "SD", "text": "Det är invandrarnas fel!", "len": 1.3, "hopp": false },
         { "t": 1.5, "vem": "V",  "text": "NEJ, HAN!", "len": 0.9, "hopp": false },
         { "t": 2.3, "vem": "KD", "text": "MAMMAAA!", "len": 0.9, "hopp": false },
         { "t": 3.1, "vem": "C",  "text": "Jag skvallrar för EU!", "len": 1.2, "hopp": false },
@@ -61,16 +61,16 @@
     {
       "typ": "rostning", "len": 8.6, "raknare": [96, 121], "musik": "spanning",
       "repliker": [
-        { "t": 0.6, "vem": "TM", "text": "Ordning! Nu röstar vi om en statsminister.", "len": 2.3, "hopp": false }
+        { "t": 0.6, "vem": "TM", "text": "Ordning! Nu röstar vi om en statsminister.", "len": 2.3, "hopp": false },
+        { "t": 5.0, "vem": "TM", "text": "Okej… förslag tre, någon?", "len": 1.6, "hopp": false }
       ],
       "stamplar": [
         { "t": 3.2, "rubrik": "FÖRSLAG 1", "text": "NEJ" },
         { "t": 4.3, "rubrik": "FÖRSLAG 2", "text": "NEJ" },
-        { "t": 5.4, "rubrik": "FÖRSLAG 3", "text": "NEJ" },
         { "t": 6.7, "banderoll": true, "text": "EXTRAVAL?!" }
       ],
       "humorVid": [[6.7, "chock"]],
-      "texter": [[6.9, 8.6, "Fyra nej i rad = extraval.\nDet är faktiskt lagen."]]
+      "texter": [[6.9, 8.6, "Två nej hittills.\nVid fyra blir det extraval."]]
     },
     {
       "typ": "kor", "len": 4.8, "raknare": [121, 128], "musik": "spela",
@@ -86,8 +86,7 @@
       "titta": { "V": [-1, 0], "S": [-1, 0.2], "MP": [-1, 0], "C": [1, 0], "L": [0, 1], "KD": [1, 0], "M": [1, 0.2], "SD": [1, 0] },
       "ljud": [[0.05, "trombon"]],
       "texter": [
-        [0.6, 5.6, "Och vi som trodde att det var vi som var barnsliga."],
-        [2.2, 5.6, "Följ för fler dagar i sandlådan.", "liten"]
+        [0.6, 5.6, "Och vi som trodde att det var vi som var barnsliga."]
       ]
     }
   ]

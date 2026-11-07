@@ -11,11 +11,11 @@ node motor/rendera.mjs films/02-sandladan/manus.json
 | 0–3 | Krok | *"Valet är klart. Nu börjar barnprogrammet."* |
 | 3–9 | Intro | Partierna springer in. *8 partier. 1 sandlåda. 0 vuxna.* |
 | 9–20 | Vem bestämmer? | S och M vill båda vara statsminister, SD vill bestämma utan att vara med, C leker inte med någon, V: *"Själv då!"* |
-| 20–29 | Mer gnäll | MP: klimatsmart sand? KD: saft bara till kärnfamiljen. L: *"Hallå? Får jag vara med?"* (ingen tittar). Bråk om spaden *"sen 1932"*. |
-| 29–34 | Bråk | Slagsmålsmoln, POW!/BONK!, *"Jag skvallrar för EU!"*. *Förhandlingarna går "framåt".* |
-| 34–42 | Talmannen | Förslag 1, 2, 3: NEJ. Fjärde: **EXTRAVAL?!** *Fyra nej i rad = extraval. Det är faktiskt lagen.* |
+| 20–29 | Mer gnäll | MP: *"Men tänk på klimatet!"* KD: saft bara till kärnfamiljen. L: *"Hallå? Får jag vara med?"* (ingen tittar). Bråk om spaden *"sen 1932"*. |
+| 29–34 | Bråk | Slagsmålsmoln, POW!/BONK!, SD: *"Det är invandrarnas fel!"*, C: *"Jag skvallrar för EU!"*. *Förhandlingarna går "framåt".* |
+| 34–42 | Talmannen | Förslag 1 och 2: NEJ (två omröstningar har redan hållits). *"Okej… förslag tre, någon?"* **EXTRAVAL?!** *Två nej hittills. Vid fyra blir det extraval.* |
 | 42–47 | Enighet | Alla i kör: **"DET ÄR DE ANDRAS FEL!"** |
-| 47–53 | Slut | Sur sandlåda, sorgsen trombon, skylten tickar vidare. *Och vi som trodde att det var vi som var barnsliga.* |
+| 47–53 | Slut | Sur sandlåda, sorgsen trombon, skylten tickar vidare. *Och vi som trodde att det var vi som var barnsliga.* (Ingen uppmaning att följa.) |
 
 **Balans:** varje parti får en känga och ingen pekas ut mer än någon annan.
 
